@@ -52,11 +52,15 @@ function gui_OpeningFcn(hObject, eventdata, handles, varargin)
 % handles    structure with handles and user data (see GUIDATA)
 % varargin   command line arguments to gui (see VARARGIN)
 
+img=imread('Images\cubosEjemplo.JPG');
+imshow(img);
+axis off
 % Choose default command line output for gui
 handles.output = hObject;
 
 % Update handles structure
 guidata(hObject, handles);
+
 
 % UIWAIT makes gui wait for user response (see UIRESUME)
 % uiwait(handles.figure1);
@@ -71,6 +75,7 @@ function varargout = gui_OutputFcn(hObject, eventdata, handles)
 
 % Get default command line output from handles structure
 varargout{1} = handles.output;
+
 
 
 
@@ -155,6 +160,7 @@ res = eulerPoincareCharacteristic3D(cuboHueco,1);
 cube = cuboHueco();
 implay(cube);
 set(handles.text7,'String',res);
+
 
 % --- Executes on button press in pushbutton5.
 function pushbutton5_Callback(hObject, eventdata, handles)
