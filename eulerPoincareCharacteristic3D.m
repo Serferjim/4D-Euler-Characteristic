@@ -99,8 +99,8 @@ for x=1: size(imageToAnalize,1)
             
         end
         
-        %end
-        eulerCharacteristic = size(n0,2) -size(n1,2) +size(n2,2) - size(n3,2);
-        
     end
+    eulerCharacteristic = size(n0,2) -size(n1,2) +size(n2,2) - size(n3,2);
     
+end
+
