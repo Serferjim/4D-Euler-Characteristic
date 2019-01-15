@@ -140,7 +140,7 @@ function pushbutton3_Callback(hObject, eventdata, handles)
 % hObject    handle to pushbutton3 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-res = eulerPoincareCharacteristic3D(cuboAristas,1);
+res = eulerPoincareCharacteristic3D(cuboAristas,[1,1]);
 cube = cuboAristas();
 implay(cube);
 set(handles.text7,'String',res);
@@ -151,7 +151,7 @@ function pushbutton4_Callback(hObject, eventdata, handles)
 % hObject    handle to pushbutton4 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-res = eulerPoincareCharacteristic3D(cuboHueco,1);
+res = eulerPoincareCharacteristic3D(cuboHueco,[1,1]);
 cube = cuboHueco();
 implay(cube);
 set(handles.text7,'String',res);
@@ -161,7 +161,7 @@ function pushbutton5_Callback(hObject, eventdata, handles)
 % hObject    handle to pushbutton5 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-res = eulerPoincareCharacteristic3D(cuboSolido,1);
+res = eulerPoincareCharacteristic3D(cuboSolido,[1,1]);
 cube = cuboSolido();
 implay(cube);
 set(handles.text7,'String',res);
