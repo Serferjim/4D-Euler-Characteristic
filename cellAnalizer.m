@@ -9,7 +9,7 @@ n3 = {};
 for x=1: size(imageToAnalize,1)
     for y=1: size(imageToAnalize,2)
         for z=1: size(imageToAnalize,3)
-            if imageToAnalize(x,y,z) >= threshold
+            if imageToAnalize(x,y,z) >= threshold(1) && imageToAnalize(x,y,z) <= threshold(2)
                 if  not(ismember(num2str([x+xdesp-0.5,y+ydesp-0.5,z-0.5]), n0))
                     n0{end +1} = num2str([x+xdesp-0.5,y+ydesp-0.5,z-0.5]);
                 end

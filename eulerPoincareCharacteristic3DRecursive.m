@@ -1,10 +1,9 @@
-function [euler, n0, n1, n2, n3] = prueba(inputImage,threshold,xdesp,ydesp,isFirst)
+function [euler, n0, n1, n2, n3] = eulerPoincareCharacteristic3DRecursive(inputImage,threshold,xdesp,ydesp,isFirst)
 %UNTITLED Summary of this function goes here
 %   Detailed explanation goes here
-tic
-if isFirst
+if isFirst == "True"
     imageToAnalize = nrrdread(inputImage);
-    isFirst = false;
+    isFirst = "False";
 else
     imageToAnalize = inputImage;
 end
@@ -18,29 +17,37 @@ n3 = {};
 if(dimensions(1) >= 4 && dimensions(2) >= 4 && dimensions(3) >=4)
     xdespNext = xdesp + round(dimensions(1)/2) + 1;
     ydespNext = ydesp + round(dimensions(1)/2) + 1;
-    firstCuarter = imageToAnalize(1:round(size(imageToAnalize,1)/2),1:round(size(imageToAnalize,2)/2),:);
-    secondCuarter = imageToAnalize(round(size(imageToAnalize,1)/2)+1:size(imageToAnalize,1),1:round(size(imageToAnalize,2)/2),:);
-    thirdCuarter = imageToAnalize(1:round(size(imageToAnalize,1)/2),round(size(imageToAnalize,2)/2)+1:size(imageToAnalize,2),:);
-    fourthCuarter = imageToAnalize(round(size(imageToAnalize,1)/2)+1:size(imageToAnalize,1),round(size(imageToAnalize,2)/2)+1:size(imageToAnalize,2),:);
-    [subEuler1,n01,n11,n21,n31] = prueba(firstCuarter,threshold,xdesp,ydesp,isFirst);
+    firstCuarter = ...
+        imageToAnalize(1:round(size(imageToAnalize,1)/2),1:round(size(imageToAnalize,2)/2),:);
+    secondCuarter = ...
+        imageToAnalize(round(size(imageToAnalize,1)/2)+1:size(imageToAnalize,1),1:round(size(imageToAnalize,2)/2),:);
+    thirdCuarter = ...
+        imageToAnalize(1:round(size(imageToAnalize,1)/2),round(size(imageToAnalize,2)/2)+1:size(imageToAnalize,2),:);
+    fourthCuarter = ...
+        imageToAnalize(round(size(imageToAnalize,1)/2)+1:size(imageToAnalize,1),round(size(imageToAnalize,2)/2)+1:size(imageToAnalize,2),:);
+    [subEuler1,n01,n11,n21,n31] = ...
+        eulerPoincareCharacteristic3DRecursive(firstCuarter,threshold,xdesp,ydesp,isFirst);
     cells1 = {n01,n11,n21,n31};
     n0 = union(n0,n01);
     n1 = union(n1,n11);
     n2 = union(n2,n21);
     n3 = union(n3,n31);
-    [subEuler2,n02,n12,n22,n32] = prueba(secondCuarter,threshold,xdespNext,ydesp,isFirst);
+    [subEuler2,n02,n12,n22,n32] = ...
+        eulerPoincareCharacteristic3DRecursive(secondCuarter,threshold,xdespNext,ydesp,isFirst);
     cells2 = {n02,n12,n22,n32};
     n0 = union(n0,n02);
     n1 = union(n1,n12);
     n2 = union(n2,n22);
     n3 = union(n3,n32);
-    [subEuler3,n03,n13,n23,n33] = prueba(thirdCuarter,threshold,xdesp,ydespNext,isFirst);
+    [subEuler3,n03,n13,n23,n33] = ...
+        eulerPoincareCharacteristic3DRecursive(thirdCuarter,threshold,xdesp,ydespNext,isFirst);
     cells3 = {n03,n13,n23,n33};
     n0 = union(n0,n03);
     n1 = union(n1,n13);
     n2 = union(n2,n23);
     n3 = union(n3,n33);
-    [subEuler4,n04,n14,n24,n34] = prueba(fourthCuarter,threshold,xdespNext,ydespNext,isFirst);
+    [subEuler4,n04,n14,n24,n34] = ...
+        eulerPoincareCharacteristic3DRecursive(fourthCuarter,threshold,xdespNext,ydespNext,isFirst);
     cells4 = {n04,n14,n24,n34};
     n0 = union(n0,n04);
     n1 = union(n1,n14);
@@ -65,7 +72,6 @@ else
     n2 = union(n2,n2t);
     n3 = union(n3,n3t);
 end
-toc
 end
 
 
