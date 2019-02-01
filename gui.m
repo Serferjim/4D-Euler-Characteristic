@@ -141,7 +141,7 @@ function pushbutton3_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 tic;
-res = eulerPoincareCharacteristic3DRecursive(cuboAristas,[1,1],0,0,"False");
+res = eulerCharacteristicPrueba(cuboAristas,[1,1]);
 toc;
 cube = cuboAristas();
 implay(cube);
@@ -154,7 +154,7 @@ function pushbutton4_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 tic;
-res = eulerPoincareCharacteristic3DRecursive(cuboHueco,[1,1],0,0,"False");
+res = eulerCharacteristicPrueba(cuboHueco,[1,1]);
 toc;
 cube = cuboHueco();
 implay(cube);
@@ -166,7 +166,7 @@ function pushbutton5_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 tic;
-res = eulerPoincareCharacteristic3DRecursive(cuboSolido,[1,1],0,0,"False");
+res = eulerCharacteristicPrueba(cuboSolido,[1,1]);
 toc;
 cube = cuboSolido();
 implay(cube);

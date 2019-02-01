@@ -16,7 +16,7 @@ n3 = {};
 
 if(dimensions(1) >= 4 && dimensions(2) >= 4 && dimensions(3) >=4)
     xdespNext = xdesp + round(dimensions(1)/2) + 1;
-    ydespNext = ydesp + round(dimensions(1)/2) + 1;
+    ydespNext = ydesp + round(dimensions(2)/2) + 1;
     firstCuarter = ...
         imageToAnalize(1:round(size(imageToAnalize,1)/2),1:round(size(imageToAnalize,2)/2),:);
     secondCuarter = ...
