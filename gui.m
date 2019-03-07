@@ -22,7 +22,7 @@ function varargout = gui(varargin)
 
 % Edit the above text to modify the response to help gui
 
-% Last Modified by GUIDE v2.5 26-Feb-2019 09:52:23
+% Last Modified by GUIDE v2.5 07-Mar-2019 15:58:33
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -204,3 +204,42 @@ function maxThreshold_CreateFcn(hObject, eventdata, handles)
 if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
     set(hObject,'BackgroundColor','white');
 end
+
+
+% --- Executes on button press in pushbutton6.
+function pushbutton6_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbutton6 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+tic;
+res = eulerCharacteristic3D(toro,[1,1]);
+toc;
+toroP = toro();
+implay(toroP);
+set(handles.text7,'String',res);
+
+
+% --- Executes on button press in pushbutton7.
+function pushbutton7_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbutton7 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+tic;
+res = eulerCharacteristic3D(toroTocandoToro,[1,1]);
+toc;
+toroTT = toroTocandoToro();
+implay(toroTT);
+set(handles.text7,'String',res);
+
+
+% --- Executes on button press in pushbutton8.
+function pushbutton8_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbutton8 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+tic;
+res = eulerCharacteristic3D(cilindro,[1,1]);
+toc;
+cilinder= cilindro();
+implay(cilinder);
+set(handles.text7,'String',res);
