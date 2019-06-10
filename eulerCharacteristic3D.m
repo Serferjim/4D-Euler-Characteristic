@@ -10,6 +10,7 @@ n0Prime = {};
 n1Prime = {};
 n2Prime = {};
 n3Prime = {};
+voxels = 0;
 f = waitbar(0,'Calculating...');
 tic;
 for z = 1 : size(inputImage,3) -1
@@ -23,6 +24,7 @@ for z = 1 : size(inputImage,3) -1
     euler = euler + newEuler - eulerIntersec;
     x = x + 1;
     y = y + 1;
+    voxels = voxels + size(n3,2);
 end
 delete(f);
 toc;
